@@ -103,3 +103,33 @@ class TestCriterion(IntegrationTestCase):
         # only document3 is found
         self.assertTrue(results.actual_result_count == 1)
         self.assertTrue(results[0].UID == document3.UID())
+
+    def test_adapter_not_found(self):
+        """
+          If named adapter given to criterion does not exist, it does not break,
+          it is simply not taken into account.
+        """
+        portal = self.layer['portal']
+        login(portal, TEST_USER_NAME)
+        # setup some documents
+        document1, document2, document3, document4, document5 = self._setupSomeDocuments()
+
+        # use a non existing named adapter
+        query = list(COMPOUND_QUERY)
+        query[0]['v'] = 'unexisting-named-adapter'
+        query = query + [{
+            'i': 'portal_type',
+            'o': 'plone.app.querystring.operation.string.is',
+            'v': 'Document'
+        }]
+
+        # add a collection using the compound criterion
+        portal.invokeFactory("Collection",
+                             "collection",
+                             title="Collection",
+                             query=query,
+                             sort_on='getId')
+        collection = portal['collection']
+        results = collection.results(batch=False)
+        # the compound part is not taken into account, it will return the 5 documents
+        self.assertTrue(results.actual_result_count == 5)
