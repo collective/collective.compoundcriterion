@@ -1,5 +1,6 @@
-from plone.app.testing import login
+from copy import deepcopy
 from collective.compoundcriterion.testing import IntegrationTestCase
+from plone.app.testing import login
 from plone.app.testing import TEST_USER_NAME
 
 
@@ -115,7 +116,7 @@ class TestCriterion(IntegrationTestCase):
         document1, document2, document3, document4, document5 = self._setupSomeDocuments()
 
         # use a non existing named adapter
-        query = list(COMPOUND_QUERY)
+        query = deepcopy(COMPOUND_QUERY)
         query[0]['v'] = 'unexisting-named-adapter'
         query = query + [{
             'i': 'portal_type',
