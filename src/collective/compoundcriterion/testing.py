@@ -21,8 +21,7 @@ import collective.compoundcriterion
 class CollectiveCompoundcriterionLayer(PloneSandboxLayer):
 
     defaultBases = (PLONE_FIXTURE,)
-    products = ('collective.compoundcriterion',
-               )
+    products = ('collective.compoundcriterion', )
 
     def setUpZope(self, app, configurationContext):
         """Set up Zope."""
@@ -54,20 +53,17 @@ class CollectiveCompoundcriterionLayer(PloneSandboxLayer):
 
 
 FIXTURE = CollectiveCompoundcriterionLayer(
-    name="FIXTURE"
-    )
+    name="FIXTURE")
 
 
 INTEGRATION = IntegrationTesting(
     bases=(FIXTURE,),
-    name="INTEGRATION"
-    )
+    name="INTEGRATION")
 
 
 FUNCTIONAL = FunctionalTesting(
     bases=(FIXTURE,),
-    name="FUNCTIONAL"
-    )
+    name="FUNCTIONAL")
 
 
 ACCEPTANCE = FunctionalTesting(bases=(FIXTURE,

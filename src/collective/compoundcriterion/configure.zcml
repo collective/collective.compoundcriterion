@@ -12,11 +12,6 @@
 
     <include package="plone.api" />
 
-    <adapter for="plone.app.collection.interfaces.ICollection"
-             factory=".adapter.CompoundCrietrionFilterAdapter"
-             provides=".interfaces.ICoumpondCriterionFilter"
-             name="advanced-filter" />
-
     <genericsetup:registerProfile
         name="default"
         title="collective.compoundcriterion"
