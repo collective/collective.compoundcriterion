@@ -9,14 +9,13 @@
     <i18n:registerTranslations directory="locales" />
 
     <five:registerPackage package="." initialize=".initialize" />
-    
-    <include package="five.grok" />
+
     <include package="plone.api" />
 
-    <include package=".browser" />
-    <include package=".content" />
-
-    <grok:grok package="." />
+    <adapter for="plone.app.collection.interfaces.ICollection"
+             factory=".adapter.CompoundCrietrionFilterAdapter"
+             provides=".interfaces.ICoumpondCriterionFilter"
+             name="advanced-filter" />
 
     <genericsetup:registerProfile
         name="default"
