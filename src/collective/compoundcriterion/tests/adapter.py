@@ -1,7 +1,5 @@
 # encoding: utf-8
 
-from collective.compoundcriterion.tests.test_criterion import TEXT_TO_FIND
-
 
 class CompoundCrietrionFilterAdapter(object):
 
@@ -10,4 +8,4 @@ class CompoundCrietrionFilterAdapter(object):
 
     @property
     def query(self):
-        return {'Title': {'query': TEXT_TO_FIND}}
+        return {'Title': {'query': u'special_text_to_find'}}
