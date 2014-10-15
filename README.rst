@@ -36,4 +36,9 @@ To register this complex query builder named adapter, you will have to add this 
             provides="collective.compoundcriterion.interfaces.ICoumpondCriterionFilter"
             name="testing-compound-adapter" />
  
-Such an adapter is available in the testing part, so, adding the code above to your configure.zcml will make it possible to test the functionnality.
+How to test
+-----------
+
+Add the adapter registration zcml here above to a configure.zcml file (like the one in collective.compoundcriterion), it will make the 'testing-compound-adapter' available in the Collection 'Filter' index.
+
+This testing adapter will query elements of the site having string 'special_text_to_find' in the title.  So create a document with such title and it should work.
