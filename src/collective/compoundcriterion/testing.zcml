@@ -12,6 +12,11 @@
              provides="collective.compoundcriterion.interfaces.ICompoundCriterionFilter"
              name="testing-compound-adapter" />
 
+    <adapter for="*"
+             factory="collective.compoundcriterion.tests.adapter.SampleCompoundCrietrionFilterAdapter"
+             provides="collective.compoundcriterion.interfaces.ICompoundCriterionFilter"
+             name="sample-compound-adapter" />
+
     <genericsetup:registerProfile
         name="testing"
         title="collective.compoundcriterion tests"

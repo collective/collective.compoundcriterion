@@ -1,7 +1,9 @@
 from copy import deepcopy
-from collective.compoundcriterion.testing import IntegrationTestCase
+from zope.component import queryUtility
+from zope.schema.interfaces import IVocabularyFactory
 from plone.app.testing import login
 from plone.app.testing import TEST_USER_NAME
+from collective.compoundcriterion.testing import IntegrationTestCase
 
 
 TEXT_TO_FIND = u'special_text_to_find'
@@ -134,3 +136,16 @@ class TestCriterion(IntegrationTestCase):
         results = collection.results(batch=False)
         # the compound part is not taken into account, it will return the 5 documents
         self.assertTrue(results.actual_result_count == 5)
+
+    def test_vocabulary(self):
+        """
+          Test the vocabulary that display available named adapters that
+          provides the ICompoundCriterionFilter interface.
+        """
+        factory = queryUtility(IVocabularyFactory, u'collective.compoundcriterion.Filters')
+        vocab = factory(self.portal)
+        # we have 2 registered adapters
+        self.assertTrue(len(vocab) == 2)
+        # check that returned adapters are the correct ones
+        self.assertTrue('sample-compound-adapter' in vocab.by_value)
+        self.assertTrue('testing-compound-adapter' in vocab.by_value)
