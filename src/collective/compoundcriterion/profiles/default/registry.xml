@@ -6,7 +6,7 @@
         <value key="title" i18n:translate="">Is</value>
         <value key="description" i18n:translate=""></value>
         <value key="operation">collective.compoundcriterion.queryparser._filter_is</value>
-        <value key="widget">StringWidget</value>
+        <value key="widget">SelectionWidget</value>
     </records>
 
     <records interface="plone.app.querystring.interfaces.IQueryField"
@@ -18,6 +18,7 @@
         <value key="operations">
             <element>plone.app.querystring.operation.compound.is</element>
         </value>
+        <value key="vocabulary">collective.compoundcriterion.Filters</value>
        <value key="group" i18n:translate="">Other</value>
     </records>
 

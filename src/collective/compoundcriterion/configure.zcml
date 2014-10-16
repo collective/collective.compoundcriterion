@@ -12,6 +12,20 @@
 
     <include package="plone.api" />
 
+    <!--adapter for="*"
+             factory="collective.compoundcriterion.tests.adapter.TestingCompoundCrietrionFilterAdapter"
+             provides="collective.compoundcriterion.interfaces.ICompoundCriterionFilter"
+             name="testing-compound-adapter" /-->
+
+    <!-- adapter for="*"
+             factory="collective.compoundcriterion.tests.adapter.SampleCompoundCrietrionFilterAdapter"
+             provides="collective.compoundcriterion.interfaces.ICompoundCriterionFilter"
+             name="sample-compound-adapter" /-->
+
+    <utility
+        component=".vocabularies.CompoundCriterionVocabularyFactory"
+        name="collective.compoundcriterion.Filters" />
+
     <genericsetup:registerProfile
         name="default"
         title="collective.compoundcriterion"

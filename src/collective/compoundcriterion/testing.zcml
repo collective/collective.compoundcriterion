@@ -7,9 +7,9 @@
 
     <include package="ecreall.helpers.testing" />
 
-    <adapter for="plone.app.collection.interfaces.ICollection"
-             factory="collective.compoundcriterion.tests.adapter.CompoundCrietrionFilterAdapter"
-             provides="collective.compoundcriterion.interfaces.ICoumpondCriterionFilter"
+    <adapter for="*"
+             factory="collective.compoundcriterion.tests.adapter.TestingCompoundCrietrionFilterAdapter"
+             provides="collective.compoundcriterion.interfaces.ICompoundCriterionFilter"
              name="testing-compound-adapter" />
 
     <genericsetup:registerProfile

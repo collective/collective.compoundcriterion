@@ -9,5 +9,5 @@ class ICollectiveCompoundcriterionLayer(IDefaultBrowserLayer):
     """Marker interface that defines a browser layer."""
 
 
-class ICoumpondCriterionFilter(Interface):
+class ICompoundCriterionFilter(Interface):
     """Marker interface for the adapter to use as compound criterion possible value."""
