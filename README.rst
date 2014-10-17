@@ -44,6 +44,7 @@ Add the adapter registration zcml here above to a configure.zcml file (like the 
 This testing adapter will query elements of the site having string 'special_text_to_find' in the title.  So create a document with such title and it should work.
 
 A second adapter can be used to test :
+
 .. code:: xml
 
     <adapter for="*"
