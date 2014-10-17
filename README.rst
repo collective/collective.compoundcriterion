@@ -31,7 +31,7 @@ To register this complex query builder named adapter, you will have to add this 
 
 .. code:: xml
 
-   <adapter for="plone.app.collection.interfaces.ICollection"
+   <adapter for="*"
             factory="collective.compoundcriterion.tests.adapter.CompoundCrietrionFilterAdapter"
             provides="collective.compoundcriterion.interfaces.ICoumpondCriterionFilter"
             name="testing-compound-adapter" />
