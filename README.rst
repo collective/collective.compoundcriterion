@@ -33,7 +33,7 @@ To register this complex query builder named adapter, you will have to add this 
 
    <adapter for="*"
             factory="collective.compoundcriterion.tests.adapter.CompoundCrietrionFilterAdapter"
-            provides="collective.compoundcriterion.interfaces.ICoumpondCriterionFilter"
+            provides="collective.compoundcriterion.interfaces.ICompoundCriterionFilter"
             name="testing-compound-adapter" />
  
 How to test
