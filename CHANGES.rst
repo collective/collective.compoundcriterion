@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-0.2 (unreleased)
+0.2 (2015-09-04)
 ----------------
 
 - Raise a KeyError if the format of the query returned by the named adapter
