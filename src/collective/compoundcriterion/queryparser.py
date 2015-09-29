@@ -20,9 +20,9 @@ def _filter_is(context, row):
         # }
         for term in named_adapter.query.values():
             if not isinstance(term, dict) or \
-               not 'query' in term:
-                raise ValueError("The query format returned by '{0}' named adapter "
-                                 "is not plone.app.querystring compliant !".format(
-                                 row.values))
+               'query' not in term:
+                raise ValueError(
+                    "The query format returned by '{0}' named adapter "
+                    "is not plone.app.querystring compliant !".format(row.values))
         return named_adapter.query
     return {}
