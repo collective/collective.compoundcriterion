@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-0.3 (unreleased)
+0.3 (2016-12-08)
 ----------------
 
 - Return clear message when a query format is not plone.app.querystring compliant.
