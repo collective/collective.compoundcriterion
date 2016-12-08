@@ -9,7 +9,7 @@ script:
   - bin/test
   - bin/createcoverage
 after_success:
-  - pip install coveralls==0.5
+  - pip install coverage==3.6 coveralls
   - coveralls
 notifications:
   email:
