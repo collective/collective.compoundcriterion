@@ -21,6 +21,16 @@ class SampleCompoundCrietrionFilterAdapter(object):
         return {'Title': {'query': u'title_with_sample_text'}}
 
 
+class PortalTypeCompoundCrietrionFilterAdapter(object):
+
+    def __init__(self, context):
+        self.context = context
+
+    @property
+    def query(self):
+        return {'portal_type': {'query': ['Document', 'Folder']}}
+
+
 class WrongFormatCompoundCrietrionFilterAdapter(object):
 
     def __init__(self, context):

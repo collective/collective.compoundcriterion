@@ -16,6 +16,11 @@
              name="sample-compound-adapter" />
 
     <adapter for="*"
+             factory="collective.compoundcriterion.tests.adapter.PortalTypeCompoundCrietrionFilterAdapter"
+             provides="collective.compoundcriterion.interfaces.ICompoundCriterionFilter"
+             name="portaltype-compound-adapter" />
+
+    <adapter for="*"
              factory="collective.compoundcriterion.tests.adapter.WrongFormatCompoundCrietrionFilterAdapter"
              provides="collective.compoundcriterion.interfaces.ICompoundCriterionFilter"
              name="wrongformat-compound-adapter" />

@@ -1,6 +1,7 @@
 from copy import deepcopy
 from zope.component import queryUtility
 from zope.schema.interfaces import IVocabularyFactory
+from plone.app.querystring.queryparser import parseFormquery
 from plone.app.testing import login
 from plone.app.testing import TEST_USER_NAME
 from collective.compoundcriterion.testing import IntegrationTestCase
@@ -11,7 +12,7 @@ DOCUMENT_COMMON_TEXT = u'My_document_common_text'
 COMPOUND_QUERY = [{
     'i': 'CompoundCriterion',
     'o': 'plone.app.querystring.operation.compound.is',
-    'v': 'testing-compound-adapter',
+    'v': ['testing-compound-adapter'],
 }]
 
 
@@ -144,12 +145,10 @@ class TestCriterion(IntegrationTestCase):
         """
         factory = queryUtility(IVocabularyFactory, u'collective.compoundcriterion.Filters')
         vocab = factory(self.portal)
-        # we have 3 registered adapters
-        self.assertTrue(len(vocab) == 3)
-        # check that returned adapters are the correct ones
-        self.assertTrue('sample-compound-adapter' in vocab.by_value)
-        self.assertTrue('testing-compound-adapter' in vocab.by_value)
-        self.assertTrue('wrongformat-compound-adapter' in vocab.by_value)
+        self.assertEqual(
+            sorted(vocab.by_value),
+            [u'portaltype-compound-adapter', u'sample-compound-adapter',
+             u'testing-compound-adapter', u'wrongformat-compound-adapter'])
 
     def test_wrong_query_format(self):
         """
@@ -176,3 +175,12 @@ class TestCriterion(IntegrationTestCase):
                                   sort_on='getId')
         collection = self.portal['collection']
         self.assertRaises(ValueError, collection.results, batch=False)
+
+    def test_mulitple_adapters(self):
+        """We are able to select multiple values in the MultipleSelectionWidget."""
+        query = list(COMPOUND_QUERY)
+        query[0]['v'] = ['testing-compound-adapter', 'portaltype-compound-adapter']
+        self.assertEqual(
+            parseFormquery(self.portal, query),
+            {'portal_type': {'query': ['Document', 'Folder']},
+             'Title': {'query': u'special_text_to_find'}})

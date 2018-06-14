@@ -5,8 +5,15 @@ Changelog
 0.4 (unreleased)
 ----------------
 
-- Nothing changed yet.
-
+- When getting the adapter, if context is a 'Plone Site', try to get real context
+  (the Collection) from the REQUEST.  This is the case when using Collection
+  from plone.app.contenttypes.
+  [gbastien]
+- Do not use a SelectionWidget to render the querystring widget as it does not
+  exist anymore for plone.app.contenttypes Collection.
+  Use the MultipleSelectionWidget.  This way finally we may select several
+  filters to build the query.
+  [gbastien]
 
 0.3 (2016-12-08)
 ----------------

@@ -5,27 +5,6 @@
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     i18n_domain="collective.compoundcriterion">
 
-    <i18n:registerTranslations directory="locales" />
-
-    <five:registerPackage package="." initialize=".initialize" />
-
-    <include package="plone.api" />
-    <include file="profiles.zcml" />
-
-    <!--adapter for="*"
-             factory="collective.compoundcriterion.tests.adapter.TestingCompoundCrietrionFilterAdapter"
-             provides="collective.compoundcriterion.interfaces.ICompoundCriterionFilter"
-             name="testing-compound-adapter" /-->
-
-    <!-- adapter for="*"
-             factory="collective.compoundcriterion.tests.adapter.SampleCompoundCrietrionFilterAdapter"
-             provides="collective.compoundcriterion.interfaces.ICompoundCriterionFilter"
-             name="sample-compound-adapter" /-->
-
-    <utility
-        component=".vocabularies.CompoundCriterionVocabularyFactory"
-        name="collective.compoundcriterion.Filters" />
-
     <genericsetup:registerProfile
         name="default"
         title="collective.compoundcriterion"
@@ -40,5 +19,15 @@
         description="Post install import step from collective.compoundcriterion"
         handler=".setuphandlers.post_install">
     </genericsetup:importStep>
+
+    <genericsetup:upgradeSteps
+      source="1"
+      destination="2"
+      profile="collective.compoundcriterion:default">
+      <genericsetup:upgradeDepends
+          title="Update plone.app.querystring operation to use MultipleSelectionWidget instead SelectionWidget"
+          description=""
+          import_steps="plone.app.registry" />
+    </genericsetup:upgradeSteps>
 
 </configure>
