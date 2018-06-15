@@ -1,6 +1,8 @@
 # encoding: utf-8
 
 from collective.compoundcriterion.interfaces import ICompoundCriterionFilter
+from plone.z3cform.layout import FormWrapper
+from Products.CMFPlone.Portal import PloneSite
 from zope.component import queryAdapter
 from zope.globalrequest import getRequest
 
@@ -8,11 +10,13 @@ from zope.globalrequest import getRequest
 def _get_real_context(context):
     """If context is a 'Plone Site' (case when used with Collection of
        plone.app.contenttypes), try to get real context from REQUEST."""
-    if context.portal_type == 'Plone Site':
+    if isinstance(context, PloneSite):
         request = getRequest()
         published = request.get('PUBLISHED', None)
         if published and hasattr(published, 'context'):
-            return published.context
+            context = published.context
+    elif isinstance(context, FormWrapper):
+        context = context.context
     return context
 
 

@@ -5,8 +5,8 @@ Changelog
 0.4 (unreleased)
 ----------------
 
-- When getting the adapter, if context is a 'Plone Site', try to get real context
-  (the Collection) from the REQUEST.  This is the case when using Collection
+- When getting the adapter, if context is not the Collection, try to get real context
+  following various cases.  This is the case when using Collection
   from plone.app.contenttypes.
   [gbastien]
 - Do not use a SelectionWidget to render the querystring widget as it does not
