@@ -1,12 +1,13 @@
+============================
+collective.compoundcriterion
+============================
+
 .. image:: https://secure.travis-ci.org/collective/collective.compoundcriterion.png
    :target: http://travis-ci.org/collective/collective.compoundcriterion
 
 .. image:: https://coveralls.io/repos/collective/collective.compoundcriterion/badge.svg?branch=master&service=github
   :target: https://coveralls.io/github/collective/collective.compoundcriterion?branch=master
 
-============================
-collective.compoundcriterion
-============================
 
 This package add a new kind of criterion available for plone.app.collection.
 
