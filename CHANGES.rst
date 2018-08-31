@@ -14,6 +14,8 @@ Changelog
   Use the MultipleSelectionWidget.  This way finally we may select several
   filters to build the query.
   [gbastien]
+- When using 'not' in queries for ZCatalog 3, 'query' level must be replaced by 'not' in query dictionary.
+  [sgeulette]
 
 0.3 (2016-12-08)
 ----------------

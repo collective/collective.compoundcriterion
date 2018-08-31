@@ -147,8 +147,8 @@ class TestCriterion(IntegrationTestCase):
         vocab = factory(self.portal)
         self.assertEqual(
             sorted(vocab.by_value),
-            [u'portaltype-compound-adapter', u'sample-compound-adapter',
-             u'testing-compound-adapter', u'wrongformat-compound-adapter'])
+            [u'not-compound-adapter', u'portaltype-compound-adapter', u'sample-compound-adapter',
+             u'testing-compound-adapter', u'wrong-not-compound-adapter', u'wrongformat-compound-adapter'])
 
     def test_wrong_query_format(self):
         """
@@ -163,10 +163,13 @@ class TestCriterion(IntegrationTestCase):
             'range': 'min'},
           }
           It needs the values to be in a dict in the 'query' key.
+          Excepted for 'not' queries in ZCatalog, where 'query' level must not be there :
+          {'portal_type': {'not': ['Document']}}
         """
         login(self.portal, TEST_USER_NAME)
-        # add a collection using the wrongformat compound criterion
         query = deepcopy(COMPOUND_QUERY)
+
+        # without 'query' level in adapter dictionary
         query[0]['v'] = 'wrongformat-compound-adapter'
         self.portal.invokeFactory("Collection",
                                   "collection",
@@ -176,7 +179,17 @@ class TestCriterion(IntegrationTestCase):
         collection = self.portal['collection']
         self.assertRaises(ValueError, collection.results, batch=False)
 
-    def test_mulitple_adapters(self):
+        # with 'query' level in adapter dictionary, but also with 'not' sub level
+        query[0]['v'] = 'wrong-not-compound-adapter'
+        collection.query = query
+        self.assertRaises(ValueError, collection.results, batch=False)
+
+        # with 'not' level in adapter dictionary
+        query[0]['v'] = 'not-compound-adapter'
+        collection.query = query
+        collection.results(batch=False)  # do not raises
+
+    def test_multiple_adapters(self):
         """We are able to select multiple values in the MultipleSelectionWidget."""
         query = list(COMPOUND_QUERY)
         query[0]['v'] = ['testing-compound-adapter', 'portaltype-compound-adapter']

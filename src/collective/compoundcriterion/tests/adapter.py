@@ -1,7 +1,7 @@
 # encoding: utf-8
 
 
-class TestingCompoundCrietrionFilterAdapter(object):
+class TestingCompoundCriterionFilterAdapter(object):
 
     def __init__(self, context):
         self.context = context
@@ -11,7 +11,7 @@ class TestingCompoundCrietrionFilterAdapter(object):
         return {'Title': {'query': u'special_text_to_find'}}
 
 
-class SampleCompoundCrietrionFilterAdapter(object):
+class SampleCompoundCriterionFilterAdapter(object):
 
     def __init__(self, context):
         self.context = context
@@ -21,7 +21,7 @@ class SampleCompoundCrietrionFilterAdapter(object):
         return {'Title': {'query': u'title_with_sample_text'}}
 
 
-class PortalTypeCompoundCrietrionFilterAdapter(object):
+class PortalTypeCompoundCriterionFilterAdapter(object):
 
     def __init__(self, context):
         self.context = context
@@ -31,7 +31,7 @@ class PortalTypeCompoundCrietrionFilterAdapter(object):
         return {'portal_type': {'query': ['Document', 'Folder']}}
 
 
-class WrongFormatCompoundCrietrionFilterAdapter(object):
+class WrongFormatCompoundCriterionFilterAdapter(object):
 
     def __init__(self, context):
         self.context = context
@@ -39,3 +39,23 @@ class WrongFormatCompoundCrietrionFilterAdapter(object):
     @property
     def query(self):
         return {'portal_type': ['Document', 'Folder']}
+
+
+class NotCompoundCriterionFilterAdapter(object):
+
+    def __init__(self, context):
+        self.context = context
+
+    @property
+    def query(self):
+        return {'portal_type': {'not': ['Folder']}}
+
+
+class WrongNotCompoundCriterionFilterAdapter(object):
+
+    def __init__(self, context):
+        self.context = context
+
+    @property
+    def query(self):
+        return {'portal_type': {'query': {'not': ['Document']}}}

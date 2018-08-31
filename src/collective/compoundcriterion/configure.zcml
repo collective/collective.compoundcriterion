@@ -13,12 +13,12 @@
     <include file="profiles.zcml" />
 
     <!--adapter for="*"
-             factory="collective.compoundcriterion.tests.adapter.TestingCompoundCrietrionFilterAdapter"
+             factory="collective.compoundcriterion.tests.adapter.TestingCompoundCriterionFilterAdapter"
              provides="collective.compoundcriterion.interfaces.ICompoundCriterionFilter"
              name="testing-compound-adapter" /-->
 
     <!-- adapter for="*"
-             factory="collective.compoundcriterion.tests.adapter.SampleCompoundCrietrionFilterAdapter"
+             factory="collective.compoundcriterion.tests.adapter.SampleCompoundCriterionFilterAdapter"
              provides="collective.compoundcriterion.interfaces.ICompoundCriterionFilter"
              name="sample-compound-adapter" /-->
 

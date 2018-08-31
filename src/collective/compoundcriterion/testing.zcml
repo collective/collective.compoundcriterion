@@ -6,24 +6,34 @@
     <include file="configure.zcml" />
 
     <adapter for="*"
-             factory="collective.compoundcriterion.tests.adapter.TestingCompoundCrietrionFilterAdapter"
+             factory="collective.compoundcriterion.tests.adapter.TestingCompoundCriterionFilterAdapter"
              provides="collective.compoundcriterion.interfaces.ICompoundCriterionFilter"
              name="testing-compound-adapter" />
 
     <adapter for="*"
-             factory="collective.compoundcriterion.tests.adapter.SampleCompoundCrietrionFilterAdapter"
+             factory="collective.compoundcriterion.tests.adapter.SampleCompoundCriterionFilterAdapter"
              provides="collective.compoundcriterion.interfaces.ICompoundCriterionFilter"
              name="sample-compound-adapter" />
 
     <adapter for="*"
-             factory="collective.compoundcriterion.tests.adapter.PortalTypeCompoundCrietrionFilterAdapter"
+             factory="collective.compoundcriterion.tests.adapter.PortalTypeCompoundCriterionFilterAdapter"
              provides="collective.compoundcriterion.interfaces.ICompoundCriterionFilter"
              name="portaltype-compound-adapter" />
 
     <adapter for="*"
-             factory="collective.compoundcriterion.tests.adapter.WrongFormatCompoundCrietrionFilterAdapter"
+             factory="collective.compoundcriterion.tests.adapter.WrongFormatCompoundCriterionFilterAdapter"
              provides="collective.compoundcriterion.interfaces.ICompoundCriterionFilter"
              name="wrongformat-compound-adapter" />
+
+    <adapter for="*"
+             factory="collective.compoundcriterion.tests.adapter.NotCompoundCriterionFilterAdapter"
+             provides="collective.compoundcriterion.interfaces.ICompoundCriterionFilter"
+             name="not-compound-adapter" />
+
+    <adapter for="*"
+             factory="collective.compoundcriterion.tests.adapter.WrongNotCompoundCriterionFilterAdapter"
+             provides="collective.compoundcriterion.interfaces.ICompoundCriterionFilter"
+             name="wrong-not-compound-adapter" />
 
     <genericsetup:registerProfile
         name="testing"

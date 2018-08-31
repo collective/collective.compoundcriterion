@@ -44,9 +44,11 @@ def _filter_is(context, row):
             # }
             for term in named_adapter.query.values():
                 if not isinstance(term, dict) or \
-                   'query' not in term:
+                   ('query' in term and isinstance(term['query'], dict) and 'not' in term['query']) or \
+                   ('query' not in term and 'not' not in term):
                     raise ValueError(
                         "The query format returned by '{0}' named adapter "
-                        "is not plone.app.querystring compliant !".format(row.values))
+                        "is not plone.app.querystring compliant ! "
+                        "'query' level must be present in dictionary, excepted for 'not' criteria !".format(row.values))
             query.update(named_adapter.query)
     return query
