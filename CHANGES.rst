@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-0.4 (unreleased)
+0.4 (2018-08-31)
 ----------------
 
 - When getting the adapter, if context is not the Collection, try to get real context
