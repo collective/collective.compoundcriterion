@@ -1,13 +1,14 @@
-# Translation of collective.compoundcriterion.pot to Spanish
-# Leonardo J. Caballero G. <leonardocaballero@gmail.com>, 2020.
-#
+# Translators:
+# Héctor Velarde, 2020
+# Leonardo J. Caballero G. <leonardocaballero@gmail.com>, 2020
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: collective.compoundcriterion\n"
 "POT-Creation-Date: 2014-10-15 12:12+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
-"Last-Translator: Leonardo J. Caballero G. <leonardocaballero@gmail.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2020-04-27 12:01+0000\n"
+"Last-Translator: Leonardo J. Caballero G. <leonardocaballero@gmail.com>, 2020\n"
+"Language-Team: Spanish (https://www.transifex.com/plone/teams/14552/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -18,12 +19,13 @@ msgstr ""
 "Domain: collective.compoundcriterion\n"
 "X-Is-Fallback-For: es-ar es-bo es-cl es-co es-cr es-do es-ec es-es es-sv es-gt es-hn es-mx es-ni es-pa es-py es-pe es-pr es-us es-uy es-ve\n"
 
+
 #: ../profiles/default/registry.xml
 msgid "Compound criterion"
-##msgstr "Filtre"
 msgstr "Filtro"
 
 #: ../profiles/default/registry.xml
+msgid "Is"
 msgstr "Es"
 
 #: ../profiles/default/registry.xml
@@ -33,3 +35,4 @@ msgstr "Otro"
 #: ../profiles/default/registry.xml
 msgid "Select the method that will compute the query"
 msgstr "Seleccione el método el cual calculará la consulta"
+
