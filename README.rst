@@ -52,3 +52,14 @@ A second adapter can be used to test :
              name="sample-compound-adapter" />
 
 This one will query elements having 'title_with_sample_text' in the title.
+
+
+Translations
+------------
+
+This product has been translated into
+
+- French.
+
+- Spanish.
+
