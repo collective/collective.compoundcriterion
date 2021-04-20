@@ -10,7 +10,6 @@ Changelog
 - Add Spanish translation
   [macagua]
 
-
 0.4 (2018-08-31)
 ----------------
 
