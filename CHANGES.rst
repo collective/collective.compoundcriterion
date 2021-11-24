@@ -5,7 +5,8 @@ Changelog
 0.6 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Fix py3 errors.
+  [fngaha]
 
 
 0.5 (2021-04-20)
