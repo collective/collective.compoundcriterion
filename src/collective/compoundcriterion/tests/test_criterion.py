@@ -1,10 +1,10 @@
+from collective.compoundcriterion.testing import IntegrationTestCase
 from copy import deepcopy
-from zope.component import queryUtility
-from zope.schema.interfaces import IVocabularyFactory
 from plone.app.querystring.queryparser import parseFormquery
 from plone.app.testing import login
 from plone.app.testing import TEST_USER_NAME
-from collective.compoundcriterion.testing import IntegrationTestCase
+from zope.component import queryUtility
+from zope.schema.interfaces import IVocabularyFactory
 
 
 TEXT_TO_FIND = u'special_text_to_find'
