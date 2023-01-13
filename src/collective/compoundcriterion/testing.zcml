@@ -4,6 +4,7 @@
     i18n_domain="collective.compoundcriterion">
 
     <include file="configure.zcml" />
+    <include package="ftw.labels" />
 
     <adapter for="*"
              factory="collective.compoundcriterion.tests.adapter.TestingCompoundCriterionFilterAdapter"
