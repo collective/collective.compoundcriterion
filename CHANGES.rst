@@ -5,8 +5,9 @@ Changelog
 0.6 (unreleased)
 ----------------
 
-- Nothing changed yet.
-
+- Added `negative-previous-index` and `negative-personal-labels` default adapters.
+  Rely on `imio.helpers`. Removed dependency on `unittest2`.
+  [gbastien]
 
 0.5 (2021-04-20)
 ----------------
