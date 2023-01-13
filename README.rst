@@ -54,6 +54,15 @@ A second adapter can be used to test :
 This one will query elements having 'title_with_sample_text' in the title.
 
 
+Negative index adapters
+-----------------------
+
+Two specific adapters exist to negativize query:
+
+- `negative-previous-index` that will negativize the values of the previous index defined in the query;
+- `negative-personal-labels` that does the same but for ftw.labels personal labels that needs specific handling as current user id is managed in indexed values.
+
+
 Translations
 ------------
 
