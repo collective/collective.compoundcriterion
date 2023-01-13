@@ -147,8 +147,14 @@ class TestCriterion(IntegrationTestCase):
         vocab = factory(self.portal)
         self.assertEqual(
             sorted(vocab.by_value),
-            [u'not-compound-adapter', u'portaltype-compound-adapter', u'sample-compound-adapter',
-             u'testing-compound-adapter', u'wrong-not-compound-adapter', u'wrongformat-compound-adapter'])
+            [u'negative-personal-labels',
+             u'negative-previous-index',
+             u'not-compound-adapter',
+             u'portaltype-compound-adapter',
+             u'sample-compound-adapter',
+             u'testing-compound-adapter',
+             u'wrong-not-compound-adapter',
+             u'wrongformat-compound-adapter'])
 
     def test_wrong_query_format(self):
         """
