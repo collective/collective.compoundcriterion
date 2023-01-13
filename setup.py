@@ -41,6 +41,7 @@ setup(
     ],
     extras_require={
         'test': [
+            'ftw.labels',
             'plone.app.testing',
             'plone.app.robotframework',
         ],
