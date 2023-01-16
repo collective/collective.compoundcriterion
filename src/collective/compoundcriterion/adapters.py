@@ -5,6 +5,10 @@ from imio.helpers.cache import get_current_user_id
 
 class NegativePreviousIndexValuesAdapter(object):
 
+    # make it easy to determinate adapter name in case it is registered
+    # several times or under another name
+    _adapter_name = u'negative-previous-index'
+
     def __init__(self, context):
         self.context = context
 
@@ -18,7 +22,7 @@ class NegativePreviousIndexValuesAdapter(object):
         previous = None
         for value in self.context.query:
             if value[u'i'] == u'CompoundCriterion' and \
-               u'negative-previous-index' in value[u'v']:
+               self._adapter_name in value[u'v']:
                 break
             previous = value
 
