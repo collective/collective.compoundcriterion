@@ -3,5 +3,6 @@
   <version>1</version>
   <dependencies>
     <dependency>profile-collective.compoundcriterion:default</dependency>
+    <dependency>profile-ftw.labels:default</dependency>
   </dependencies>
 </metadata>

@@ -147,8 +147,14 @@ class TestCriterion(IntegrationTestCase):
         vocab = factory(self.portal)
         self.assertEqual(
             sorted(vocab.by_value),
-            [u'not-compound-adapter', u'portaltype-compound-adapter', u'sample-compound-adapter',
-             u'testing-compound-adapter', u'wrong-not-compound-adapter', u'wrongformat-compound-adapter'])
+            [u'negative-personal-labels',
+             u'negative-previous-index',
+             u'not-compound-adapter',
+             u'portaltype-compound-adapter',
+             u'sample-compound-adapter',
+             u'testing-compound-adapter',
+             u'wrong-not-compound-adapter',
+             u'wrongformat-compound-adapter'])
 
     def test_wrong_query_format(self):
         """
@@ -197,3 +203,62 @@ class TestCriterion(IntegrationTestCase):
             parseFormquery(self.portal, query),
             {'portal_type': {'query': ['Document', 'Folder']},
              'Title': {'query': u'special_text_to_find'}})
+
+    def test_negative_previous_index_adapter(self):
+        """The negative-previous-index will result in a query with previous index
+           selected on the collection negativized."""
+        login(self.portal, TEST_USER_NAME)
+        query = [
+            {
+                'i': 'portal_type',
+                'o': 'plone.app.querystring.operation.compound.is',
+                'v': ['Document'],
+            },
+            {
+                'i': 'CompoundCriterion',
+                'o': 'plone.app.querystring.operation.compound.is',
+                'v': ['negative-previous-index'],
+            },
+        ]
+
+        # add a collection using the compound criterion
+        self.portal.invokeFactory(
+            "Collection",
+            "collection",
+            title="Collection",
+            query=query,
+            sort_on='getId')
+        collection = self.portal['collection']
+        # the portal_type was negativized
+        self.assertEqual(
+            parseFormquery(collection, collection.query),
+            {'portal_type': {'not': ['Document']}})
+
+    def test_negative_personal_labels_adapter(self):
+        """The negative-personal-labels will result in a query with previous index
+           "labels" having negativized and memberized values."""
+        login(self.portal, TEST_USER_NAME)
+        query = [
+            {
+                'i': 'labels',
+                'o': 'plone.app.querystring.operation.compound.is',
+                'v': ['follow', 'read'],
+            },
+            {
+                'i': 'CompoundCriterion',
+                'o': 'plone.app.querystring.operation.compound.is',
+                'v': ['negative-personal-labels'],
+            },
+        ]
+        # add a collection using the compound criterion
+        self.portal.invokeFactory(
+            "Collection",
+            "collection",
+            title="Collection",
+            query=query,
+            sort_on='getId')
+        collection = self.portal['collection']
+        # the portal_type was negativized
+        self.assertEqual(
+            parseFormquery(collection, collection.query),
+            {'labels': {'not': ['test_user_1_:follow', 'test_user_1_:read']}})
