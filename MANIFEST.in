@@ -1,6 +1,9 @@
 include *.py
 include *.rst
+include *.txt
+include ci.cfg
 include .coveragerc
+include .isort.cfg
 include .travis.yml
 include buildout.cfg
 include travis.cfg
