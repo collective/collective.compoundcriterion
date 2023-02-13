@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-0.6 (unreleased)
+0.6 (2023-02-13)
 ----------------
 
 - Added `negative-previous-index` and `negative-personal-labels` default adapters.
