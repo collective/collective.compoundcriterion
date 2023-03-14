@@ -22,13 +22,13 @@ class NegativePreviousIndexValuesAdapter(object):
         previous = None
         for value in self.context.query:
             if value[u'i'] == u'CompoundCriterion' and \
-               self._adapter_name in value[u'v']:
+               self._adapter_name in value.get(u'v', []):
                 break
             previous = value
 
         query = {}
         if previous:
-            query[previous[u'i']] = {'not': previous[u'v']}
+            query[previous[u'i']] = {'not': previous.get(u'v', [])}
         return query
 
 

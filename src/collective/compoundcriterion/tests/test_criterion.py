@@ -233,6 +233,33 @@ class TestCriterion(IntegrationTestCase):
         self.assertEqual(
             parseFormquery(collection, collection.query),
             {'portal_type': {'not': ['Document']}})
+        # does not break with query without 'v'
+        query[0].pop('v')
+        collection.setQuery(query)
+        self.assertEqual(
+            parseFormquery(collection, collection.query),
+            {'portal_type': {'not': []}})
+        # when several filters and one is empty
+        query = [
+            {
+                'i': 'CompoundCriterion',
+                'o': 'plone.app.querystring.operation.compound.is',
+            },
+            {
+                'i': 'portal_type',
+                'o': 'plone.app.querystring.operation.compound.is',
+                'v': ['Document'],
+            },
+            {
+                'i': 'CompoundCriterion',
+                'o': 'plone.app.querystring.operation.compound.is',
+                'v': ['negative-previous-index'],
+            },
+        ]
+        collection.setQuery(query)
+        self.assertEqual(
+            parseFormquery(collection, collection.query),
+            {'portal_type': {'not': ['Document']}})
 
     def test_negative_personal_labels_adapter(self):
         """The negative-personal-labels will result in a query with previous index
@@ -262,3 +289,9 @@ class TestCriterion(IntegrationTestCase):
         self.assertEqual(
             parseFormquery(collection, collection.query),
             {'labels': {'not': ['test_user_1_:follow', 'test_user_1_:read']}})
+        # does not break with query without 'v'
+        query[0].pop('v')
+        collection.setQuery(query)
+        self.assertEqual(
+            parseFormquery(collection, collection.query),
+            {'labels': {'not': []}})

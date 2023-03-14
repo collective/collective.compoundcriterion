@@ -5,8 +5,9 @@ Changelog
 0.7 (unreleased)
 ----------------
 
-- Nothing changed yet.
-
+- Do not break in `negative-previous-index` when some filters does not have
+  values (so the `'v'` is not there in the query).
+  [gbastien]
 
 0.6 (2023-02-13)
 ----------------
