@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-0.7 (unreleased)
+0.7 (2023-04-12)
 ----------------
 
 - Do not break in `negative-previous-index` when some filters does not have

@@ -12,7 +12,7 @@ long_description = (
 
 setup(
     name='collective.compoundcriterion',
-    version='0.7.dev0',
+    version='0.7',
     description="Compound criterion for plone.app.collection managing complex query",
     long_description=long_description,
     # Get more from http://pypi.python.org/pypi?%3Aaction=list_classifiers
