@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """Base module for unittesting."""
 
+from collective.compoundcriterion import HAS_PLONE_5_AND_MORE
 from plone.app.robotframework.testing import AUTOLOGIN_LIBRARY_FIXTURE
 from plone.app.testing import applyProfile
 from plone.app.testing import FunctionalTesting
@@ -33,7 +34,10 @@ class CollectiveCompoundcriterionLayer(PloneSandboxLayer):
     def setUpPloneSite(self, portal):
         """Set up Plone."""
         # Install into Plone site using portal_setup
-        applyProfile(portal, 'collective.compoundcriterion:testing')
+        if not HAS_PLONE_5_AND_MORE:
+            applyProfile(portal, 'collective.compoundcriterion:testing')
+        else:
+            applyProfile(portal, 'collective.compoundcriterion:testing_plone6')
 
         # Login and create some test content
         setRoles(portal, TEST_USER_ID, ['Manager'])
