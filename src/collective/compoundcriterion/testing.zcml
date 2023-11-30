@@ -1,10 +1,11 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     i18n_domain="collective.compoundcriterion">
 
     <include file="configure.zcml" />
-    <include package="ftw.labels" />
+    <include zcml:condition="not-have plone-5" package="ftw.labels" />
 
     <adapter for="*"
              factory="collective.compoundcriterion.tests.adapter.TestingCompoundCriterionFilterAdapter"
@@ -37,9 +38,19 @@
              name="wrong-not-compound-adapter" />
 
     <genericsetup:registerProfile
+        zcml:condition="not-have plone-5"
         name="testing"
         title="collective.compoundcriterion tests"
         directory="profiles/testing"
+        description="Steps to ease tests of collective.compoundcriterion"
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+    />
+
+    <genericsetup:registerProfile
+        zcml:condition="have plone-5"
+        name="testing_plone6"
+        title="collective.compoundcriterion tests"
+        directory="profiles/testing_plone6"
         description="Steps to ease tests of collective.compoundcriterion"
         provides="Products.GenericSetup.interfaces.EXTENSION"
     />
