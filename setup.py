@@ -39,7 +39,6 @@ setup(
         'imio.helpers',
         'plone.api',
         'setuptools',
-        'archetypes.querywidget >= 1.1.2',
     ],
     extras_require={
         'test': [
