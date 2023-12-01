@@ -1,0 +1,14 @@
+<registry xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+          i18n:domain="collective.compoundcriterion">
+
+    <records interface="plone.app.querystring.interfaces.IQueryOperation"
+             prefix="plone.app.querystring.operation.compound.is"
+             remove="True">
+    </records>
+
+    <records interface="plone.app.querystring.interfaces.IQueryField"
+             prefix="plone.app.querystring.field.CompoundCriterion"
+             remove="True">
+    </records>
+
+</registry>
