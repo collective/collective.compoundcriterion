@@ -24,14 +24,15 @@ def _filter_is(context, row):
     context = _get_real_context(context)
     values = row.values
     # compatibility when using SingleSelectionWidget
-    if not hasattr(values, '__iter__'):
+    # add python3 compatibility beacause str is __iter__ with python3
+    if isinstance(values, str) or not hasattr(values, '__iter__'):
         values = [values]
 
     query = {}
     for value in values:
         named_adapter = queryAdapter(context,
                                      ICompoundCriterionFilter,
-                                     name=value)
+                                     name=str(value))
         if named_adapter:
             # check that query is plone.app.querystring compliant
             # the value needs to be defined with a 'query' dict like :

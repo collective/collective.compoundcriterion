@@ -1,8 +1,10 @@
+
 from collective.compoundcriterion.testing import IntegrationTestCase
 from copy import deepcopy
 from plone.app.querystring.queryparser import parseFormquery
 from plone.app.testing import login
 from plone.app.testing import TEST_USER_NAME
+from plone.app.textfield.value import RichTextValue
 from zope.component import queryUtility
 from zope.schema.interfaces import IVocabularyFactory
 
@@ -22,19 +24,20 @@ class TestCriterion(IntegrationTestCase):
         '''
         '''
         portal = self.layer['portal']
+        RICH_DOCUMENT_COMMON_TEXT = RichTextValue(DOCUMENT_COMMON_TEXT,"text/html", "text/html")
         data = (
             {'id': 'document1',
              'title': 'My_document_common_title',
-             'text': DOCUMENT_COMMON_TEXT},
+             'text': RICH_DOCUMENT_COMMON_TEXT},
             {'id': 'document2',
              'title': 'My_document_common_title',
-             'text': DOCUMENT_COMMON_TEXT},
+             'text': RICH_DOCUMENT_COMMON_TEXT},
             {'id': 'document3',
              'title': 'My_document_common_title' + ' ' + TEXT_TO_FIND,
-             'text': DOCUMENT_COMMON_TEXT},
+             'text': RICH_DOCUMENT_COMMON_TEXT},
             {'id': 'document4',
              'title': 'My document 4 title',
-             'text': DOCUMENT_COMMON_TEXT},
+             'text': RICH_DOCUMENT_COMMON_TEXT},
             {'id': 'document5',
              'title': 'My_document_5_title' + ' ' + TEXT_TO_FIND,
              'text': 'My_document_NOT_common_text'},
@@ -50,7 +53,7 @@ class TestCriterion(IntegrationTestCase):
             res.append(document)
         return res
 
-    def test_criterion(self):
+    def test_criterion1(self):
         """
           Check that the compound criterion is taken into account :
           - add some documents with various title, including document with a
@@ -89,6 +92,8 @@ class TestCriterion(IntegrationTestCase):
         # the additional criterion here will restrict to documents
         # having DOCUMENT_COMMON_TEXT in SearchableText, so doc1, doc2, doc3 and doc4
         # the result will be the intersection of both, so only document3 will be found
+
+        # COMPOUND_QUERY
         query = COMPOUND_QUERY + [{
             'i': 'SearchableText',
             'o': 'plone.app.querystring.operation.string.is',
@@ -104,6 +109,12 @@ class TestCriterion(IntegrationTestCase):
 
         collection = portal['collection']
         results = collection.results(batch=False)
+
+        from plone import api
+        catalog = api.portal.get_tool("portal_catalog")
+        brain = api.content.find(UID=document3.UID())[0]
+        indexes = catalog.getIndexDataForRID(brain.getRID())
+        searchable_text = indexes.get("SearchableText") or []    
         # only document3 is found
         self.assertTrue(results.actual_result_count == 1)
         self.assertTrue(results[0].UID == document3.UID())
