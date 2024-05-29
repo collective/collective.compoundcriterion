@@ -43,7 +43,7 @@ def _filter_is(context, row):
             #  {'query': DateTime('2015/05/05'),
             #   'range': 'min'},
             # }
-            for term in named_adapter.query.values():
+            for term in list(named_adapter.query.values()):
                 if not isinstance(term, dict) or \
                    ('query' in term and isinstance(term['query'], dict) and 'not' in term['query']) or \
                    ('query' not in term and 'not' not in term):
