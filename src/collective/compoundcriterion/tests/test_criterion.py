@@ -24,7 +24,7 @@ class TestCriterion(IntegrationTestCase):
         '''
         '''
         portal = self.layer['portal']
-        RICH_DOCUMENT_COMMON_TEXT = RichTextValue(DOCUMENT_COMMON_TEXT,"text/html", "text/html")
+        RICH_DOCUMENT_COMMON_TEXT = RichTextValue(DOCUMENT_COMMON_TEXT, "text/html", "text/html")
         data = (
             {'id': 'document1',
              'title': 'My_document_common_title',
@@ -109,12 +109,6 @@ class TestCriterion(IntegrationTestCase):
 
         collection = portal['collection']
         results = collection.results(batch=False)
-
-        from plone import api
-        catalog = api.portal.get_tool("portal_catalog")
-        brain = api.content.find(UID=document3.UID())[0]
-        indexes = catalog.getIndexDataForRID(brain.getRID())
-        searchable_text = indexes.get("SearchableText") or []    
         # only document3 is found
         self.assertTrue(results.actual_result_count == 1)
         self.assertTrue(results[0].UID == document3.UID())

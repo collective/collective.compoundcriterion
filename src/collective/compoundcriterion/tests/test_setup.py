@@ -5,6 +5,7 @@ from collective.compoundcriterion import HAS_PLONE_5_AND_MORE
 from collective.compoundcriterion.testing import IntegrationTestCase
 from plone import api
 
+
 if HAS_PLONE_5_AND_MORE:
     from Products.CMFPlone.utils import get_installer
 
@@ -25,8 +26,8 @@ class TestInstall(IntegrationTestCase):
         if not HAS_PLONE_5_AND_MORE:
             self.assertTrue(self.installer.isProductInstalled('collective.compoundcriterion'))
         else:
-            self.assertTrue(self.installer.is_product_installed('collective.compoundcriterion'))        
-        
+            self.assertTrue(self.installer.is_product_installed('collective.compoundcriterion'))
+
     def test_uninstall(self):
         """Test if collective.compoundcriterion is cleanly uninstalled."""
         if not HAS_PLONE_5_AND_MORE:
