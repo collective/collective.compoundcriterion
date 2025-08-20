@@ -13,21 +13,12 @@
     <include package="plone.api" />
     <include file="profiles.zcml" />
 
-    <!--adapter for="*"
-             factory="collective.compoundcriterion.tests.adapter.TestingCompoundCriterionFilterAdapter"
-             provides="collective.compoundcriterion.interfaces.ICompoundCriterionFilter"
-             name="testing-compound-adapter" /-->
-
-    <!-- adapter for="*"
-             factory="collective.compoundcriterion.tests.adapter.SampleCompoundCriterionFilterAdapter"
-             provides="collective.compoundcriterion.interfaces.ICompoundCriterionFilter"
-             name="sample-compound-adapter" /-->
-
     <adapter
         for="*"
         factory="collective.compoundcriterion.adapters.NegativePreviousIndexValuesAdapter"
         provides="collective.compoundcriterion.interfaces.ICompoundCriterionFilter"
         name="negative-previous-index" />
+
     <adapter
         zcml:condition="installed ftw.labels"
         for="*"
