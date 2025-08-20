@@ -31,7 +31,7 @@ To register this complex query builder named adapter, you will have to add this 
 .. code:: xml
 
    <adapter for="*"
-            factory="collective.compoundcriterion.tests.adapter.CompoundCrietrionFilterAdapter"
+            factory="collective.compoundcriterion.tests.adapter.TestingCompoundCriterionFilterAdapter"
             provides="collective.compoundcriterion.interfaces.ICompoundCriterionFilter"
             name="testing-compound-adapter" />
 
@@ -47,7 +47,7 @@ A second adapter can be used to test :
 .. code:: xml
 
     <adapter for="*"
-             factory="collective.compoundcriterion.tests.adapter.SampleCompoundCrietrionFilterAdapter"
+             factory="collective.compoundcriterion.tests.adapter.SampleCompoundCriterionFilterAdapter"
              provides="collective.compoundcriterion.interfaces.ICompoundCriterionFilter"
              name="sample-compound-adapter" />
 
