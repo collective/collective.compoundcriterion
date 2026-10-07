@@ -27,29 +27,29 @@ except ImportError:  # Plone 4
 class CollectiveCompoundcriterionLayer(PloneSandboxLayer):
 
     defaultBases = (PLONE_FIXTURE,)
-    products = ('collective.compoundcriterion', )
+    products = ("collective.compoundcriterion",)
 
     def setUpZope(self, app, configurationContext):
         """Set up Zope."""
         # Load ZCML
-        self.loadZCML(package=collective.compoundcriterion,
-                      name='testing.zcml')
+        self.loadZCML(package=collective.compoundcriterion, name="testing.zcml")
         for p in self.products:
             z2.installProduct(app, p)
 
     def setUpPloneSite(self, portal):
         """Set up Plone."""
         # Install into Plone site using portal_setup
-        applyProfile(portal, 'collective.compoundcriterion:testing')
+        applyProfile(portal, "collective.compoundcriterion:testing")
 
         # Login and create some test content
-        setRoles(portal, TEST_USER_ID, ['Manager'])
+        setRoles(portal, TEST_USER_ID, ["Manager"])
         login(portal, TEST_USER_NAME)
-        folder_id = portal.invokeFactory('Folder', 'folder')
+        folder_id = portal.invokeFactory("Folder", "folder")
         portal[folder_id].reindexObject()
 
         # Commit so that the test browser sees these objects
         import transaction
+
         transaction.commit()
 
     def tearDownZope(self, app):
@@ -58,23 +58,18 @@ class CollectiveCompoundcriterionLayer(PloneSandboxLayer):
             z2.uninstallProduct(app, p)
 
 
-FIXTURE = CollectiveCompoundcriterionLayer(
-    name="FIXTURE")
+FIXTURE = CollectiveCompoundcriterionLayer(name="FIXTURE")
 
 
-INTEGRATION = IntegrationTesting(
-    bases=(FIXTURE,),
-    name="INTEGRATION")
+INTEGRATION = IntegrationTesting(bases=(FIXTURE,), name="INTEGRATION")
 
 
-FUNCTIONAL = FunctionalTesting(
-    bases=(FIXTURE,),
-    name="FUNCTIONAL")
+FUNCTIONAL = FunctionalTesting(bases=(FIXTURE,), name="FUNCTIONAL")
 
 
 ACCEPTANCE = FunctionalTesting(
-    bases=(FIXTURE, REMOTE_LIBRARY_BUNDLE_FIXTURE, SERVER_FIXTURE),
-    name="ACCEPTANCE")
+    bases=(FIXTURE, REMOTE_LIBRARY_BUNDLE_FIXTURE, SERVER_FIXTURE), name="ACCEPTANCE"
+)
 
 
 class IntegrationTestCase(unittest.TestCase):
@@ -84,7 +79,7 @@ class IntegrationTestCase(unittest.TestCase):
 
     def setUp(self):
         super(IntegrationTestCase, self).setUp()
-        self.portal = self.layer['portal']
+        self.portal = self.layer["portal"]
 
 
 class FunctionalTestCase(unittest.TestCase):

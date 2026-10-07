@@ -6,13 +6,19 @@ from setuptools import setup
 
 
 long_description = (
-    open('README.rst').read() + '\n' +
-    'Contributors\n============\n' + '\n' + open('CONTRIBUTORS.rst').read() +
-    '\n' + open('CHANGES.rst').read() + '\n')
+    open("README.rst").read()
+    + "\n"
+    + "Contributors\n============\n"
+    + "\n"
+    + open("CONTRIBUTORS.rst").read()
+    + "\n"
+    + open("CHANGES.rst").read()
+    + "\n"
+)
 
 setup(
-    name='collective.compoundcriterion',
-    version='0.8.dev0',
+    name="collective.compoundcriterion",
+    version="0.8.dev0",
     description="Compound criterion for plone.app.collection managing complex query",
     long_description=long_description,
     # Get more from http://pypi.python.org/pypi?%3Aaction=list_classifiers
@@ -39,26 +45,26 @@ setup(
         "Programming Language :: Python :: 3.13",
         "Topic :: Software Development :: Libraries :: Python Modules",
     ],
-    keywords='Plone collection criterion',
-    author='IMIO',
-    author_email='support@imio.be',
-    url='http://pypi.python.org/pypi/collective.compoundcriterion',
-    license='GPL',
-    packages=find_packages('src', exclude=['ez_setup']),
-    namespace_packages=['collective'],
-    package_dir={'': 'src'},
+    keywords="Plone collection criterion",
+    author="IMIO",
+    author_email="support@imio.be",
+    url="http://pypi.python.org/pypi/collective.compoundcriterion",
+    license="GPL",
+    packages=find_packages("src", exclude=["ez_setup"]),
+    namespace_packages=["collective"],
+    package_dir={"": "src"},
     include_package_data=True,
     zip_safe=False,
     install_requires=[
-        'imio.helpers',
-        'plone.api',
-        'setuptools',
+        "imio.helpers",
+        "plone.api",
+        "setuptools",
     ],
     extras_require={
-        'test': [
-            'ftw.labels',
-            'plone.app.testing',
-            'plone.app.robotframework',
+        "test": [
+            "ftw.labels",
+            "plone.app.testing",
+            "plone.app.robotframework",
         ],
     },
     entry_points="""

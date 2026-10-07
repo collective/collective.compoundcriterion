@@ -8,7 +8,7 @@ class TestingCompoundCriterionFilterAdapter(object):
 
     @property
     def query(self):
-        return {'Title': {'query': u'special_text_to_find'}}
+        return {"Title": {"query": "special_text_to_find"}}
 
 
 class SampleCompoundCriterionFilterAdapter(object):
@@ -18,7 +18,7 @@ class SampleCompoundCriterionFilterAdapter(object):
 
     @property
     def query(self):
-        return {'Title': {'query': u'title_with_sample_text'}}
+        return {"Title": {"query": "title_with_sample_text"}}
 
 
 class PortalTypeCompoundCriterionFilterAdapter(object):
@@ -28,7 +28,7 @@ class PortalTypeCompoundCriterionFilterAdapter(object):
 
     @property
     def query(self):
-        return {'portal_type': {'query': ['Document', 'Folder']}}
+        return {"portal_type": {"query": ["Document", "Folder"]}}
 
 
 class WrongFormatCompoundCriterionFilterAdapter(object):
@@ -38,7 +38,7 @@ class WrongFormatCompoundCriterionFilterAdapter(object):
 
     @property
     def query(self):
-        return {'portal_type': ['Document', 'Folder']}
+        return {"portal_type": ["Document", "Folder"]}
 
 
 class NotCompoundCriterionFilterAdapter(object):
@@ -48,7 +48,7 @@ class NotCompoundCriterionFilterAdapter(object):
 
     @property
     def query(self):
-        return {'portal_type': {'not': ['Folder']}}
+        return {"portal_type": {"not": ["Folder"]}}
 
 
 class WrongNotCompoundCriterionFilterAdapter(object):
@@ -58,4 +58,4 @@ class WrongNotCompoundCriterionFilterAdapter(object):
 
     @property
     def query(self):
-        return {'portal_type': {'query': {'not': ['Document']}}}
+        return {"portal_type": {"query": {"not": ["Document"]}}}
