@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """Base module for unittesting."""
 
-from plone.app.robotframework.testing import AUTOLOGIN_LIBRARY_FIXTURE
+from plone.app.robotframework.testing import REMOTE_LIBRARY_BUNDLE_FIXTURE
 from plone.app.testing import applyProfile
 from plone.app.testing import FunctionalTesting
 from plone.app.testing import IntegrationTesting
@@ -11,10 +11,17 @@ from plone.app.testing import PloneSandboxLayer
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
 from plone.app.testing import TEST_USER_NAME
-from plone.testing import z2
 
 import collective.compoundcriterion
 import unittest
+
+
+try:
+    from plone.testing import zope as z2
+    from plone.testing.zope import WSGI_SERVER_FIXTURE as SERVER_FIXTURE
+except ImportError:  # Plone 4
+    from plone.testing import z2
+    from plone.testing.z2 import ZSERVER_FIXTURE as SERVER_FIXTURE
 
 
 class CollectiveCompoundcriterionLayer(PloneSandboxLayer):
@@ -65,10 +72,9 @@ FUNCTIONAL = FunctionalTesting(
     name="FUNCTIONAL")
 
 
-ACCEPTANCE = FunctionalTesting(bases=(FIXTURE,
-                                      AUTOLOGIN_LIBRARY_FIXTURE,
-                                      z2.ZSERVER_FIXTURE),
-                               name="ACCEPTANCE")
+ACCEPTANCE = FunctionalTesting(
+    bases=(FIXTURE, REMOTE_LIBRARY_BUNDLE_FIXTURE, SERVER_FIXTURE),
+    name="ACCEPTANCE")
 
 
 class IntegrationTestCase(unittest.TestCase):
