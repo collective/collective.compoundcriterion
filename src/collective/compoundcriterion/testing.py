@@ -11,17 +11,10 @@ from plone.app.testing import PloneSandboxLayer
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
 from plone.app.testing import TEST_USER_NAME
+from plone.testing import zope
 
 import collective.compoundcriterion
 import unittest
-
-
-try:
-    from plone.testing import zope as z2
-    from plone.testing.zope import WSGI_SERVER_FIXTURE as SERVER_FIXTURE
-except ImportError:  # Plone 4
-    from plone.testing import z2
-    from plone.testing.z2 import ZSERVER_FIXTURE as SERVER_FIXTURE
 
 
 class CollectiveCompoundcriterionLayer(PloneSandboxLayer):
@@ -34,7 +27,7 @@ class CollectiveCompoundcriterionLayer(PloneSandboxLayer):
         # Load ZCML
         self.loadZCML(package=collective.compoundcriterion, name="testing.zcml")
         for p in self.products:
-            z2.installProduct(app, p)
+            zope.installProduct(app, p)
 
     def setUpPloneSite(self, portal):
         """Set up Plone."""
@@ -55,7 +48,7 @@ class CollectiveCompoundcriterionLayer(PloneSandboxLayer):
     def tearDownZope(self, app):
         """Tear down Zope."""
         for p in reversed(self.products):
-            z2.uninstallProduct(app, p)
+            zope.uninstallProduct(app, p)
 
 
 FIXTURE = CollectiveCompoundcriterionLayer(name="FIXTURE")
@@ -68,7 +61,7 @@ FUNCTIONAL = FunctionalTesting(bases=(FIXTURE,), name="FUNCTIONAL")
 
 
 ACCEPTANCE = FunctionalTesting(
-    bases=(FIXTURE, REMOTE_LIBRARY_BUNDLE_FIXTURE, SERVER_FIXTURE), name="ACCEPTANCE"
+    bases=(FIXTURE, REMOTE_LIBRARY_BUNDLE_FIXTURE, zope.WSGI_SERVER_FIXTURE), name="ACCEPTANCE"
 )
 
 

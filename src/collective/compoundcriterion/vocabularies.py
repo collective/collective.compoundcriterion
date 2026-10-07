@@ -1,5 +1,5 @@
 from collective.compoundcriterion.interfaces import ICompoundCriterionFilter
-from Products.CMFPlone import PloneMessageFactory as _p
+from plone.base import PloneMessageFactory as _p
 from zope.component import getGlobalSiteManager
 from zope.interface import implementer
 from zope.schema.interfaces import IVocabularyFactory
