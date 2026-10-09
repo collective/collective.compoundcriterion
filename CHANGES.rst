@@ -2,10 +2,11 @@ Changelog
 =========
 
 
-0.8 (unreleased)
-----------------
+1.0.0 (unreleased)
+------------------
 
-- Nothing changed yet.
+- Plone 6.0, 6.1 and 6.2 support; dropped Plone 4.3, 5.2 and Python 2.
+  [lasudry, chris-adam]
 
 
 0.7 (2023-04-12)
