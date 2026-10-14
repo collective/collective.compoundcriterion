@@ -1,6 +1,5 @@
 """Installer for the collective.compoundcriterion package."""
 
-from setuptools import find_packages
 from setuptools import setup
 
 long_description = (
@@ -43,9 +42,7 @@ setup(
     author_email="support@imio.be",
     url="http://pypi.python.org/pypi/collective.compoundcriterion",
     license="GPL",
-    packages=find_packages("src", exclude=["ez_setup"]),
     python_requires=">=3.10",
-    package_dir={"": "src"},
     include_package_data=True,
     zip_safe=False,
     install_requires=[

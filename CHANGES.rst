@@ -9,6 +9,8 @@ Changelog
   [lasudry, chris-adam]
 - Added plone.meta configuration (tox, pre-commit, GitHub Actions).
   [chris-adam]
+- Switched to PEP 420 native namespace packages.
+  [chris-adam]
 
 
 0.7 (2023-04-12)
