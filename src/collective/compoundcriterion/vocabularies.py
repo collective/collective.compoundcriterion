@@ -8,7 +8,7 @@ from zope.schema.vocabulary import SimpleVocabulary
 
 
 @implementer(IVocabularyFactory)
-class CompoundCriterionVocabulary(object):
+class CompoundCriterionVocabulary:
     """Vocabulary factory for compound criterion.
     This will return every named adapter that provides the ICoumpondCriterionFilter interface.
     """

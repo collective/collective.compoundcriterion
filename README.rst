@@ -2,11 +2,8 @@
 collective.compoundcriterion
 ============================
 
-.. image:: https://github.com/collective/collective.compoundcriterion/actions/workflows/main.yml/badge.svg
-   :target: https://github.com/collective/collective.compoundcriterion/actions/workflows/main.yml
-
-.. image:: https://coveralls.io/repos/github/collective/collective.compoundcriterion/badge.svg
-    :target: https://coveralls.io/github/collective/collective.compoundcriterion
+.. image:: https://github.com/collective/collective.compoundcriterion/actions/workflows/meta.yml/badge.svg?branch=master
+    :target: https://github.com/collective/collective.compoundcriterion/actions/workflows/meta.yml
 
 
 This package add a new kind of criterion available for plone.app.collection.

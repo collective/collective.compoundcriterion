@@ -7,7 +7,6 @@ from plone.app.textfield.value import RichTextValue
 from zope.component import queryUtility
 from zope.schema.interfaces import IVocabularyFactory
 
-
 TEXT_TO_FIND = "special_text_to_find"
 DOCUMENT_COMMON_TEXT = "My_document_common_text"
 COMPOUND_QUERY = [

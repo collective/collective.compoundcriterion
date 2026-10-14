@@ -7,6 +7,8 @@ Changelog
 
 - Plone 6.0, 6.1 and 6.2 support; dropped Plone 4.3, 5.2 and Python 2.
   [lasudry, chris-adam]
+- Added plone.meta configuration (tox, pre-commit, GitHub Actions).
+  [chris-adam]
 
 
 0.7 (2023-04-12)

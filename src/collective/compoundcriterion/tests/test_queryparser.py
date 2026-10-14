@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """Tests of the "Is" operation of the compound criterion."""
 
 from collective.compoundcriterion.queryparser import _get_real_context

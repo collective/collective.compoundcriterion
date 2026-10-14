@@ -1,9 +1,7 @@
-# -*- coding: utf-8 -*-
 """Installer for the collective.compoundcriterion package."""
 
 from setuptools import find_packages
 from setuptools import setup
-
 
 long_description = (
     open("README.rst").read()
@@ -37,6 +35,7 @@ setup(
         "Programming Language :: Python :: 3.11",
         "Programming Language :: Python :: 3.12",
         "Programming Language :: Python :: 3.13",
+        "Programming Language :: Python :: 3.14",
         "Topic :: Software Development :: Libraries :: Python Modules",
     ],
     keywords="Plone collection criterion",
@@ -52,13 +51,30 @@ setup(
     install_requires=[
         "imio.helpers",
         "plone.api",
-        "setuptools",
+        "plone.base",
+        "plone.z3cform",
+        "Products.CMFPlone",
+        "Products.GenericSetup",
+        "zope.component",
+        "zope.globalrequest",
+        "zope.i18nmessageid",
+        "zope.interface",
+        "zope.publisher",
+        "zope.schema",
     ],
     extras_require={
         "test": [
             "ftw.labels",
-            "plone.app.testing",
+            "plone.app.querystring",
             "plone.app.robotframework",
+            "plone.app.testing",
+            "plone.app.textfield",
+            "plone.browserlayer",
+            "plone.registry",
+            "plone.testing",
+            "robotsuite",
+            "transaction",
+            "zope.i18n",
         ],
     },
     entry_points="""

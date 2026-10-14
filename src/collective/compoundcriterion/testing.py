@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """Base module for unittesting."""
 
 from plone.app.robotframework.testing import REMOTE_LIBRARY_BUNDLE_FIXTURE
@@ -61,7 +60,8 @@ FUNCTIONAL = FunctionalTesting(bases=(FIXTURE,), name="FUNCTIONAL")
 
 
 ACCEPTANCE = FunctionalTesting(
-    bases=(FIXTURE, REMOTE_LIBRARY_BUNDLE_FIXTURE, zope.WSGI_SERVER_FIXTURE), name="ACCEPTANCE"
+    bases=(FIXTURE, REMOTE_LIBRARY_BUNDLE_FIXTURE, zope.WSGI_SERVER_FIXTURE),
+    name="ACCEPTANCE",
 )
 
 
@@ -71,7 +71,7 @@ class IntegrationTestCase(unittest.TestCase):
     layer = INTEGRATION
 
     def setUp(self):
-        super(IntegrationTestCase, self).setUp()
+        super().setUp()
         self.portal = self.layer["portal"]
 
 

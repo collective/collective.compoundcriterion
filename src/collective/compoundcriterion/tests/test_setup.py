@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """Setup/installation tests for this package."""
 
 from collective.compoundcriterion.interfaces import ICollectiveCompoundcriterionLayer
@@ -9,7 +8,6 @@ from plone.registry.interfaces import IRegistry
 from zope.component import getUtility
 from zope.i18n import translate
 from zope.i18nmessageid import Message
-
 
 FIELD = "plone.app.querystring.field.CompoundCriterion"
 OPERATION = "plone.app.querystring.operation.compound.is"

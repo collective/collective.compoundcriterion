@@ -12,7 +12,7 @@ fi
 
 for j in $(ls -1)
 do
-    if [ -d $j ] && [ "$j" != appy ]
+    if [ -d $j ] && [ "$j" != appy ]  # codespell:ignore appy
     then
       cd $j
       for cf in CHANGES.rst CHANGES.txt docs/HISTORY.rst docs/HISTORY.txt docs/CHANGES.rst nothing;

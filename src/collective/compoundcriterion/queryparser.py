@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 from collective.compoundcriterion.interfaces import ICompoundCriterionFilter
 from plone.z3cform.layout import FormWrapper
 from Products.CMFPlone.Portal import PloneSite
@@ -24,7 +22,7 @@ def _filter_is(context, row):
     context = _get_real_context(context)
     values = row.values
     # compatibility when using SingleSelectionWidget
-    # add python3 compatibility beacause str is __iter__ with python3
+    # add python3 compatibility because str is __iter__ with python3
     if isinstance(values, str) or not hasattr(values, "__iter__"):
         values = [values]
 
@@ -52,7 +50,7 @@ def _filter_is(context, row):
                     or ("query" not in term and "not" not in term)
                 ):
                     raise ValueError(
-                        "The query format returned by '{0}' named adapter "
+                        "The query format returned by '{}' named adapter "
                         "is not plone.app.querystring compliant ! "
                         "'query' level must be present in dictionary, excepted for 'not' criteria !".format(
                             row.values

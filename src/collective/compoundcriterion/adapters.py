@@ -1,9 +1,7 @@
-# -*- coding: utf-8 -*-
-
 from imio.helpers.cache import get_current_user_id
 
 
-class NegativePreviousIndexValuesAdapter(object):
+class NegativePreviousIndexValuesAdapter:
 
     # make it easy to determinate adapter name in case it is registered
     # several times or under another name
@@ -33,7 +31,7 @@ class NegativePreviousIndexValuesAdapter(object):
         return query
 
 
-class NegativePersonalLabelsAdapter(object):
+class NegativePersonalLabelsAdapter:
 
     def __init__(self, context):
         self.context = context
@@ -49,7 +47,7 @@ class NegativePersonalLabelsAdapter(object):
             member_id = get_current_user_id(self.request)
             # if no selected values, the 'v' key is not there...
             labels = labels[0].get("v", [])
-            personal_labels = ["{0}:{1}".format(member_id, label) for label in labels]
+            personal_labels = [f"{member_id}:{label}" for label in labels]
         return {
             "labels": {"not": personal_labels},
         }
