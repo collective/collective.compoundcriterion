@@ -1,61 +1,58 @@
-# encoding: utf-8
-
-
-class TestingCompoundCriterionFilterAdapter(object):
+class TestingCompoundCriterionFilterAdapter:
 
     def __init__(self, context):
         self.context = context
 
     @property
     def query(self):
-        return {'Title': {'query': u'special_text_to_find'}}
+        return {"Title": {"query": "special_text_to_find"}}
 
 
-class SampleCompoundCriterionFilterAdapter(object):
-
-    def __init__(self, context):
-        self.context = context
-
-    @property
-    def query(self):
-        return {'Title': {'query': u'title_with_sample_text'}}
-
-
-class PortalTypeCompoundCriterionFilterAdapter(object):
+class SampleCompoundCriterionFilterAdapter:
 
     def __init__(self, context):
         self.context = context
 
     @property
     def query(self):
-        return {'portal_type': {'query': ['Document', 'Folder']}}
+        return {"Title": {"query": "title_with_sample_text"}}
 
 
-class WrongFormatCompoundCriterionFilterAdapter(object):
-
-    def __init__(self, context):
-        self.context = context
-
-    @property
-    def query(self):
-        return {'portal_type': ['Document', 'Folder']}
-
-
-class NotCompoundCriterionFilterAdapter(object):
+class PortalTypeCompoundCriterionFilterAdapter:
 
     def __init__(self, context):
         self.context = context
 
     @property
     def query(self):
-        return {'portal_type': {'not': ['Folder']}}
+        return {"portal_type": {"query": ["Document", "Folder"]}}
 
 
-class WrongNotCompoundCriterionFilterAdapter(object):
+class WrongFormatCompoundCriterionFilterAdapter:
 
     def __init__(self, context):
         self.context = context
 
     @property
     def query(self):
-        return {'portal_type': {'query': {'not': ['Document']}}}
+        return {"portal_type": ["Document", "Folder"]}
+
+
+class NotCompoundCriterionFilterAdapter:
+
+    def __init__(self, context):
+        self.context = context
+
+    @property
+    def query(self):
+        return {"portal_type": {"not": ["Folder"]}}
+
+
+class WrongNotCompoundCriterionFilterAdapter:
+
+    def __init__(self, context):
+        self.context = context
+
+    @property
+    def query(self):
+        return {"portal_type": {"query": {"not": ["Document"]}}}

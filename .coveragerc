@@ -3,6 +3,5 @@ include =
     src/collective/*
 omit =
     */test*
-    src/collective/__init__.py
     src/collective/compoundcriterion/__init__.py
 

@@ -1,7 +1,6 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="utf-8"?>
 <layers>
-  <layer
-    name="collective.compoundcriterion"
-    interface="collective.compoundcriterion.interfaces.ICollectiveCompoundcriterionLayer"
+  <layer interface="collective.compoundcriterion.interfaces.ICollectiveCompoundcriterionLayer"
+         name="collective.compoundcriterion"
   />
 </layers>
