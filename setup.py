@@ -39,7 +39,7 @@ setup(
     ],
     keywords="Plone collection criterion",
     author="IMIO",
-    author_email="support@imio.be",
+    author_email="support-docs@imio.be",
     url="http://pypi.python.org/pypi/collective.compoundcriterion",
     license="GPL",
     python_requires=">=3.10",
