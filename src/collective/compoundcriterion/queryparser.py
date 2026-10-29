@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 from collective.compoundcriterion.interfaces import ICompoundCriterionFilter
 from plone.z3cform.layout import FormWrapper
 from Products.CMFPlone.Portal import PloneSite
@@ -9,11 +7,11 @@ from zope.globalrequest import getRequest
 
 def _get_real_context(context):
     """If context is a 'Plone Site' (case when used with Collection of
-       plone.app.contenttypes), try to get real context from REQUEST."""
+    plone.app.contenttypes), try to get real context from REQUEST."""
     if isinstance(context, PloneSite):
         request = getRequest()
-        published = request.get('PUBLISHED', None)
-        if published and hasattr(published, 'context'):
+        published = request.get("PUBLISHED", None)
+        if published and hasattr(published, "context"):
             context = published.context
     elif isinstance(context, FormWrapper):
         context = context.context
@@ -24,15 +22,13 @@ def _filter_is(context, row):
     context = _get_real_context(context)
     values = row.values
     # compatibility when using SingleSelectionWidget
-    # add python3 compatibility beacause str is __iter__ with python3
-    if isinstance(values, str) or not hasattr(values, '__iter__'):
+    # add python3 compatibility because str is __iter__ with python3
+    if isinstance(values, str) or not hasattr(values, "__iter__"):
         values = [values]
 
     query = {}
     for value in values:
-        named_adapter = queryAdapter(context,
-                                     ICompoundCriterionFilter,
-                                     name=str(value))
+        named_adapter = queryAdapter(context, ICompoundCriterionFilter, name=str(value))
         if named_adapter:
             # check that query is plone.app.querystring compliant
             # the value needs to be defined with a 'query' dict like :
@@ -44,12 +40,21 @@ def _filter_is(context, row):
             #   'range': 'min'},
             # }
             for term in list(named_adapter.query.values()):
-                if not isinstance(term, dict) or \
-                   ('query' in term and isinstance(term['query'], dict) and 'not' in term['query']) or \
-                   ('query' not in term and 'not' not in term):
+                if (
+                    not isinstance(term, dict)
+                    or (
+                        "query" in term
+                        and isinstance(term["query"], dict)
+                        and "not" in term["query"]
+                    )
+                    or ("query" not in term and "not" not in term)
+                ):
                     raise ValueError(
-                        "The query format returned by '{0}' named adapter "
+                        "The query format returned by '{}' named adapter "
                         "is not plone.app.querystring compliant ! "
-                        "'query' level must be present in dictionary, excepted for 'not' criteria !".format(row.values))
+                        "'query' level must be present in dictionary, excepted for 'not' criteria !".format(
+                            row.values
+                        )
+                    )
             query.update(named_adapter.query)
     return query
