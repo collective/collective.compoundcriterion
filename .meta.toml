@@ -30,6 +30,7 @@ test_environment_variables = """
 """
 test_matrix = {"6.2" = ["*"]}
 test_deps_additional = """
+    collective.fingerpointing @ file://{toxinidir}/sources/collective.fingerpointing
     ftw.labels @ file://{toxinidir}/sources/ftw.labels
     imio.helpers @ file://{toxinidir}/sources/imio.helpers
 """
