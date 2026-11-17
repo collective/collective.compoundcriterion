@@ -5,11 +5,13 @@ Changelog
 1.0.0 (unreleased)
 ------------------
 
-- Plone 6.0, 6.1 and 6.2 support; dropped Plone 4.3, 5.2 and Python 2.
+- Plone 6.2 support; dropped Plone 4.3, 5.2 and Python 2.
   [lasudry, chris-adam]
 - Added plone.meta configuration (tox, pre-commit, GitHub Actions).
   [chris-adam]
 - Switched to PEP 420 native namespace packages.
+  [chris-adam]
+- Dropped support for Plone versions below 6.2.
   [chris-adam]
 
 
